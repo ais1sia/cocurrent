@@ -8,7 +8,7 @@ namespace Logika
 {
     public class SimMenager
     {
-        private const float maxSzybkosc = 11;//tutaj zmieniamy predkosc
+        private const float maxSzybkosc = 10;//tutaj zmieniamy predkosc
 
         private readonly Plansza Board; 
         private readonly int SrednicaKuli;
@@ -32,18 +32,18 @@ namespace Logika
             }
         }
 
-        private Vector2 GetRandPozycja()
-        {
-            int x = rand.Next((SrednicaKuli / 2), Board.Szerokosc - (SrednicaKuli / 2))-15;
-            int y = rand.Next((SrednicaKuli / 2), Board.Wysokosc - (SrednicaKuli / 2))-10;
-            return new Vector2 (x, y);
-        }
-
         private Vector2 GetRandSzybkosc()
         {
             double x = rand.NextDouble() * (maxSzybkosc / 2f);
             double y = rand.NextDouble() * (maxSzybkosc / 2f);
             return new Vector2((float)x, (float)y);
+        }
+
+        private Vector2 GetRandPozycja()
+        {
+            int x = rand.Next((SrednicaKuli / 2), Board.Szerokosc - (SrednicaKuli / 2))-15;
+            int y = rand.Next((SrednicaKuli / 2), Board.Wysokosc - (SrednicaKuli / 2))-10;
+            return new Vector2 (x, y);
         }
 
         public IList<Kuleczka> RandGenKulek(int liczba_kulek)
