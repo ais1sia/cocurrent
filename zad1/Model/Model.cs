@@ -10,21 +10,21 @@ namespace Model
 {
     public class Model : ApiModel
     {
-        private readonly ISet<IObserver<IEnumerable<KuleczkaModel>>> observers;
+        private readonly ISet<IObserver<IEnumerable<KulkaModel>>> observers;
         private IDisposable? unsubscriber;
         private readonly LogikaAbstractApi logika;      //checklist1
 
         public Model(LogikaAbstractApi? logika = default)
         {
             this.logika = logika ?? LogikaAbstractApi.StworzLogikaApi();
-            observers = new HashSet<IObserver<IEnumerable<KuleczkaModel>>>();
+            observers = new HashSet<IObserver<IEnumerable<KulkaModel>>>();
             Subscribe(logika);
         }
 
 
-        public override void GenerowanieKuleczek(int liczba_kulek)
+        public override void GenerowanieKulek(int liczba_kulek)
         {
-            logika.GenerowanieKuleczek(liczba_kulek);
+            logika.GenerowanieKulek(liczba_kulek);
         }
 
         public override void Start()
@@ -37,12 +37,12 @@ namespace Model
             logika.StopSim();
         }
 
-        public static IEnumerable<KuleczkaModel> m(IEnumerable<Kuleczka> kulki)
+        public static IEnumerable<KulkaModel> m(IEnumerable<Kulka> kulki)
         {
-            return kulki.Select(kulka => new KuleczkaModel(kulka));
+            return kulki.Select(kulka => new KulkaModel(kulka));
         }
 
-        public void Subscribe(IObservable<IEnumerable<Kuleczka>> p)
+        public void Subscribe(IObservable<IEnumerable<Kulka>> p)
         {
             unsubscriber = p.Subscribe(this);
         }
@@ -57,7 +57,7 @@ namespace Model
         {
             throw error;
         }
-        public override void OnNext(IEnumerable<Kuleczka> kulki)
+        public override void OnNext(IEnumerable<Kulka> kulki)
         {
             SledzKulki(m(kulki));
         }
@@ -66,7 +66,7 @@ namespace Model
         {
             unsubscriber?.Dispose();
         }
-        public override IDisposable Subscribe(IObserver<IEnumerable<KuleczkaModel>> obs)
+        public override IDisposable Subscribe(IObserver<IEnumerable<KulkaModel>> obs)
         {
             if(!observers.Contains(obs))
             {
@@ -77,10 +77,10 @@ namespace Model
 
         private class Unsubscriber : IDisposable
         {
-            private readonly ISet<IObserver<IEnumerable<KuleczkaModel>>> observers;
-            private readonly IObserver<IEnumerable<KuleczkaModel>> observer;
+            private readonly ISet<IObserver<IEnumerable<KulkaModel>>> observers;
+            private readonly IObserver<IEnumerable<KulkaModel>> observer;
 
-            public Unsubscriber(ISet<IObserver<IEnumerable<KuleczkaModel>>> observers, IObserver<IEnumerable<KuleczkaModel>> observer)
+            public Unsubscriber(ISet<IObserver<IEnumerable<KulkaModel>>> observers, IObserver<IEnumerable<KulkaModel>> observer)
             {
                 this.observers = observers;
                 this.observer = observer;
@@ -95,7 +95,7 @@ namespace Model
             }
 
         }
-        public void SledzKulki(IEnumerable<KuleczkaModel> kulki)
+        public void SledzKulki(IEnumerable<KulkaModel> kulki)
         {
             foreach(var observer in this.observers) { 
                 if(kulki == null)

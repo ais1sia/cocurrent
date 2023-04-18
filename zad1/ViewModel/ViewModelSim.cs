@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class ViewModelSim : ViewModelBase, IObserver<IEnumerable<KuleczkaModel>>
+    public class ViewModelSim : ViewModelBase, IObserver<IEnumerable<KulkaModel>>
     {
         private IDisposable? unsubscriber;
 
-        private ObservableCollection<KuleczkaModel> kulki;
+        private ObservableCollection<KulkaModel> kulki;
         private readonly ApiModel logic;
         private readonly InterfaceValidator<int> validator;
         private int liczbaKulek = 5;
@@ -29,7 +29,7 @@ namespace ViewModel
             get => flag;
             private set => SetField(ref flag, value);
         }
-        public IEnumerable<KuleczkaModel> Kulki => kulki;
+        public IEnumerable<KulkaModel> Kulki => kulki;
         public ICommand SimStartCommand { get; init; }
         public ICommand SimStopCommand { get; init; }
 
@@ -38,14 +38,14 @@ namespace ViewModel
         {
             logic = model ?? ApiModel.StworzModelApi();
             validator = validatorKulek ?? new ValidatorKulek();
-            kulki = new ObservableCollection<KuleczkaModel>();
+            kulki = new ObservableCollection<KulkaModel>();
 
             SimStartCommand = new SimStartCommand(this);
             SimStopCommand = new SimStopCommand(this);
             Subscribe(logic);
         }
 
-        public void Subscribe(IObservable<IEnumerable<KuleczkaModel>> provider)//generated
+        public void Subscribe(IObservable<IEnumerable<KulkaModel>> provider)//generated
         {
             unsubscriber = provider.Subscribe(this);
         }
@@ -59,7 +59,7 @@ namespace ViewModel
         public void SimStart()
         {
             getSetFlag = true;
-            logic.GenerowanieKuleczek(LiczbaKulek);
+            logic.GenerowanieKulek(LiczbaKulek);
             logic.Start();
         }
 
@@ -79,13 +79,13 @@ namespace ViewModel
         {
             throw error;
         }
-        public void OnNext(IEnumerable<KuleczkaModel> kulki)
+        public void OnNext(IEnumerable<KulkaModel> kulki)
         {
            if(kulki == null)
            {
-               kulki = new List<KuleczkaModel>();
+               kulki = new List<KulkaModel>();
            }
-           this.kulki = new ObservableCollection<KuleczkaModel>(kulki);
+           this.kulki = new ObservableCollection<KulkaModel>(kulki);
            OnPropertyChanged(nameof(Kulki));
         }
     }

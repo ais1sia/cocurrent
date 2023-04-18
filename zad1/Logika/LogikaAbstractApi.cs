@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Logika
 {
-    public abstract class LogikaAbstractApi : IObservable<IEnumerable<Kuleczka>>
+    public abstract class LogikaAbstractApi : IObservable<IEnumerable<Kulka>>
     {
-        public abstract IEnumerable<Kuleczka> Kulki { get; }
+        public abstract IEnumerable<Kulka> Kulki { get; }
 
-        public abstract void GenerowanieKuleczek(int liczba_kulek);
+        public abstract void GenerowanieKulek(int liczba_kulek);
         public abstract void Sim();
         public abstract void StartSim();
         public abstract void StopSim();
 
         //wygenerowane przez visuala
-        public abstract IDisposable Subscribe(IObserver<IEnumerable<Kuleczka>> observer);
+        public abstract IDisposable Subscribe(IObserver<IEnumerable<Kulka>> observer);
 
         public static LogikaAbstractApi StworzLogikaApi(DaneAbstractApi? dane = default) 
         {

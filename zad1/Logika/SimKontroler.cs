@@ -9,9 +9,9 @@ namespace Logika
 {
     internal class SimKontroler : LogikaAbstractApi
     {
-        public override IEnumerable<Kuleczka> Kulki => simMenager.Kulki;
+        public override IEnumerable<Kulka> Kulki => simMenager.Kulki;
 
-        private readonly ISet<IObserver<IEnumerable<Kuleczka>>> obs;
+        private readonly ISet<IObserver<IEnumerable<Kulka>>> obs;
         private readonly DaneAbstractApi dane;      //checklist1
         private readonly SimMenager simMenager;
 
@@ -22,10 +22,10 @@ namespace Logika
             this.dane = dane ?? DaneAbstractApi.StworzDaneApi();
             simMenager = new SimMenager(new Plansza(this.dane.SzerokoscPlanszy, this.dane.WysokoscPlanszy),
                 this.dane.SrednicaKuli);
-            obs = new HashSet<IObserver<IEnumerable<Kuleczka>>>();
+            obs = new HashSet<IObserver<IEnumerable<Kulka>>>();
         }
 
-        public override void GenerowanieKuleczek(int liczba_kulek)
+        public override void GenerowanieKulek(int liczba_kulek)
         {
             simMenager.RandGenKulek(liczba_kulek);
         }
@@ -57,7 +57,7 @@ namespace Logika
             }
         }
 
-        public override IDisposable Subscribe(IObserver<IEnumerable<Kuleczka>> _observer)
+        public override IDisposable Subscribe(IObserver<IEnumerable<Kulka>> _observer)
         {
             obs.Add(_observer);
             return new Unsubcriber(obs, _observer);
@@ -65,10 +65,10 @@ namespace Logika
 
         private class Unsubcriber : IDisposable//mechanizm zrzucenie nieprzydzielonych zasobów
         {
-            private readonly ISet<IObserver<IEnumerable<Kuleczka>>> observers;
-            private readonly IObserver<IEnumerable<Kuleczka>> observer;
+            private readonly ISet<IObserver<IEnumerable<Kulka>>> observers;
+            private readonly IObserver<IEnumerable<Kulka>> observer;
 
-            public Unsubcriber(ISet<IObserver<IEnumerable<Kuleczka>>> observers, IObserver<IEnumerable<Kuleczka>> observer)
+            public Unsubcriber(ISet<IObserver<IEnumerable<Kulka>>> observers, IObserver<IEnumerable<Kulka>> observer)
             {
                 this.observers = observers;
                 this.observer = observer;
@@ -81,7 +81,7 @@ namespace Logika
             }
         }
 
-        public void SledzKulki(IEnumerable<Kuleczka> kulki)
+        public void SledzKulki(IEnumerable<Kulka> kulki)
         {
             foreach(var observer in obs)
             {

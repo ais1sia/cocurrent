@@ -19,10 +19,10 @@ namespace Logika
             Board = board;
             SrednicaKuli = srednicaKuli;
             rand = new Random();
-            Kulki = new List<Kuleczka>();
+            Kulki = new List<Kulka>();
         }
 
-        public IList<Kuleczka> Kulki { get; private set; }
+        public IList<Kulka> Kulki { get; private set; }
 
         public void PushK()
         {
@@ -46,14 +46,14 @@ namespace Logika
             return new Vector2 (x, y);
         }
 
-        public IList<Kuleczka> RandGenKulek(int liczba_kulek)
+        public IList<Kulka> RandGenKulek(int liczba_kulek)
         {
-            Kulki = new List<Kuleczka>(liczba_kulek);
+            Kulki = new List<Kulka>(liczba_kulek);
 
             for (int i = 0; i < liczba_kulek; i++){
                 Vector2 pozycja = GetRandPozycja();
                 Vector2 speed = GetRandSzybkosc();
-                Kulki.Add(new Kuleczka(SrednicaKuli, speed, pozycja));
+                Kulki.Add(new Kulka(SrednicaKuli, speed, pozycja));
             }
             return Kulki;
         }
