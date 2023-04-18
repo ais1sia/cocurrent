@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zad1" xmlns:viewmodel="clr-namespace:ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Window.DataContext>
         <viewmodel:ViewModelMain/>
     </Window.DataContext>
-    <Grid Margin="0,-1,0,1">
+    <Grid Margin="0,1,0,1">
 
-        <Button Content="Start" HorizontalAlignment="Left" Margin="564,10,0,0" VerticalAlignment="Top" Height="102" Width="226" Command="{Binding thisViewModel.SimStartCommand}"/>
-        <Button Content="stop" HorizontalAlignment="Left" Margin="564,117,0,0" VerticalAlignment="Top" Height="102" Width="226" Command="{Binding thisViewModel.SimStopCommand}"/>
-        <TextBox HorizontalAlignment="Left" Margin="617,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding thisViewModel.LiczbaKulek}"/>
-        <Border BorderBrush="#B22222" BorderThickness="3" Margin="0,28,251,126" Width="356" Height="206">
-            <ItemsControl ItemsSource="{Binding thisViewModel.Kulki}" Margin="0,0,0,0">
+        <Button Content="Start" HorizontalAlignment="Left" Margin="520,89,0,0" VerticalAlignment="Top" Height="100" Width="200" Command="{Binding thisViewModel.SimStartCommand}" Background="#FFBEE29B" FontSize="22" FontWeight="Bold" FontFamily="DejaVu Sans" BorderBrush="#FF729254" BorderThickness="2,2,2,2"/>
+        <Button Content="stop" HorizontalAlignment="Left" Margin="520,214,0,0" VerticalAlignment="Top" Height="100" Width="200" Command="{Binding thisViewModel.SimStopCommand}" FontSize="22" FontWeight="Bold" FontFamily="DejaVu Sans" Background="#FFE29B9B" BorderBrush="#FFA54444" BorderThickness="2,2,2,2"/>
+        <TextBox HorizontalAlignment="Left" Margin="568,337,0,0" VerticalAlignment="Top" Width="105" Text="{Binding thisViewModel.LiczbaKulek}" Background="#FFFFFAED" Height="25" FontSize="16" TextAlignment="Center" TextWrapping="Wrap"/>
+        <Border BorderBrush="#FFFFB100" BorderThickness="3" Margin="0,28,251,126" Width="356" Height="206">
+            <ItemsControl ItemsSource="{Binding thisViewModel.Kulki}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Name="BallSpace" Margin="0,0,0,0" Width="350" Height="200" RenderTransformOrigin="0.5,0.5">
@@ -28,7 +28,7 @@
                                 </TransformGroup>
                             </Canvas.RenderTransform>
                             <Canvas.Background>
-                                <SolidColorBrush Color="#FFFACD"/>
+                                <SolidColorBrush Color="#FFFFECC1"/>
                             </Canvas.Background>
                         </Canvas>
                     </ItemsPanelTemplate>
@@ -45,7 +45,7 @@
                                  Width="{Binding Srednica}"
                                   Margin="0, 0, 0, 0">
                             <Ellipse.Fill>
-                                <SolidColorBrush Color="#FA8072"/>
+                                <SolidColorBrush Color="#FF66A5E0"/>
                             </Ellipse.Fill>
                         </Ellipse>
                     </DataTemplate>
