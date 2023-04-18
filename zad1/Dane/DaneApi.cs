@@ -7,6 +7,6 @@
 
         public override int SzerokoscPlanszy { get; } = 350;
 
-        public override int SrednicaKuli { get; } = 20;
+        public override int SrednicaKuli { get; } = 18;
     }
 }

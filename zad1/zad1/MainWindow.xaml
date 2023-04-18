@@ -11,7 +11,7 @@
     </Window.DataContext>
     <Grid Margin="0,1,0,1">
 
-        <Button Content="Start" HorizontalAlignment="Left" Margin="520,89,0,0" VerticalAlignment="Top" Height="100" Width="200" Command="{Binding thisViewModel.SimStartCommand}" Background="#FFBEE29B" FontSize="22" FontWeight="Bold" FontFamily="DejaVu Sans" BorderBrush="#FF729254" BorderThickness="2,2,2,2"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="520,65,0,0" VerticalAlignment="Top" Height="100" Width="200" Command="{Binding thisViewModel.SimStartCommand}" Background="#FFBEE29B" FontSize="22" FontWeight="Bold" FontFamily="DejaVu Sans" BorderBrush="#FF729254" BorderThickness="2,2,2,2"/>
         <Button Content="stop" HorizontalAlignment="Left" Margin="520,214,0,0" VerticalAlignment="Top" Height="100" Width="200" Command="{Binding thisViewModel.SimStopCommand}" FontSize="22" FontWeight="Bold" FontFamily="DejaVu Sans" Background="#FFE29B9B" BorderBrush="#FFA54444" BorderThickness="2,2,2,2"/>
         <TextBox HorizontalAlignment="Left" Margin="568,337,0,0" VerticalAlignment="Top" Width="105" Text="{Binding thisViewModel.LiczbaKulek}" Background="#FFFFFAED" Height="25" FontSize="16" TextAlignment="Center" TextWrapping="Wrap"/>
         <Border BorderBrush="#FFFFB100" BorderThickness="3" Margin="0,28,251,126" Width="356" Height="206">

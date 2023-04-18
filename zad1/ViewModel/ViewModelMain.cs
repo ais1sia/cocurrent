@@ -13,7 +13,7 @@ namespace ViewModel
 
         public ViewModelMain():base()
         {
-            thisViewModel = new ViewModelSim(validatorKulek: new ValidatorKulek(1, 20));
+            thisViewModel = new ViewModelSim(validatorKulek: new ValidatorKulek(1, 25));
         }
     }
 }
