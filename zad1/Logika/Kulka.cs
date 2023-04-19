@@ -12,7 +12,10 @@ namespace Logika
     {
         public int Srednica { get; init; }
 
+        //publiczny getter, prywatny setter
         public Vector2 Szybkosc { get; set; }
+
+        //ma mieć tylko getter
         public Vector2 Pozycja { get; set; }
 
       
@@ -31,7 +34,7 @@ namespace Logika
                 return;
             }
 
-            Pozycja += Szybkosc;// Jestem predkosciom ~ Wojtas 7.4.2023
+            Pozycja += Szybkosc;
 
             var (pozX, pozY) = Pozycja; 
 
