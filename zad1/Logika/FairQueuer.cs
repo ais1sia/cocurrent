@@ -118,19 +118,6 @@ namespace Logika
             }
         }
 
-        public IDisposable Add<T>(Action<T> action) where T : struct, IConvertible
-        {
-            TypeCode typeCode = Type.GetTypeCode(typeof(T));
-
-            return Add(ActionNoArgs);
-
-            void ActionNoArgs()
-            {
-                T value = (T)Convert.ChangeType(_delta, typeCode, numberFormat);
-                action(value);
-            }
-        }
-
         public IDisposable Add(Action action)
         {
             lock (listLock)
@@ -144,6 +131,20 @@ namespace Logika
                 return new Disposer(this, action);
             }
         }
+
+        public IDisposable Add<T>(Action<T> action) where T : struct, IConvertible
+        {
+            TypeCode typeCode = Type.GetTypeCode(typeof(T));
+
+            return Add(ActionNoArgs);
+
+            void ActionNoArgs()
+            {
+                T value = (T)Convert.ChangeType(_delta, typeCode, numberFormat);
+                action(value);
+            }
+        }
+
 
         public void SetValidator(Action validator)
         {

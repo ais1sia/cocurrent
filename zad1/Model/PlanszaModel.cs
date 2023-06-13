@@ -16,7 +16,7 @@ namespace Model
             this.board = _board;
         }
 
-        public int Wysokosc => board.Wysokosc;
         public int Szerokosc => board.Szerokosc;
+        public int Wysokosc => board.Wysokosc;
     }
 }
