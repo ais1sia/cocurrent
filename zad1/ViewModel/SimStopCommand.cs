@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    // obsluga przycisku stop w naszym froncie
     public class SimStopCommand : CommandBase
     {
         private readonly ViewModelSim viewModelSim;
@@ -24,7 +23,6 @@ namespace ViewModel
             return base.CanExecute(parameter)
                 && viewModelSim.getSetFlag;
         }
-
 
         public override void Execute(object? parameter)
         {

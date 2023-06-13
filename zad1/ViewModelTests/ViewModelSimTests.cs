@@ -20,7 +20,6 @@ namespace ViewModel.Tests
             log.SimStart();
 
             Assert.IsTrue(log.getSetFlag);
-
         }
 
         [TestMethod]
@@ -31,13 +30,11 @@ namespace ViewModel.Tests
             log.SimStop();
 
             Assert.IsFalse(log.getSetFlag);
-
         }
 
         [TestMethod]
         public void LiczbaKulekZmn()
         {
-
             bool chg = false;
 
             ViewModelSim log = new ViewModelSim();
@@ -46,12 +43,8 @@ namespace ViewModel.Tests
 
             Assert.IsTrue(!chg);
 
-            //tera zmiana wartosci
             log.LiczbaKulek = 7;
             Assert.IsTrue(chg);
-
         }
-
-
     }
 }

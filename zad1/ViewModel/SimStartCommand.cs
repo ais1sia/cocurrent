@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ViewModel
-{   // obsluga przycisku start w naszym froncie
+{   
     public class SimStartCommand : CommandBase
     {
         private readonly ViewModelSim viewModelSim;
 
-        public SimStartCommand(ViewModelSim viewModelSim):base()
+        public SimStartCommand(ViewModelSim viewModelSim) : base()
         {
             this.viewModelSim = viewModelSim;
 
@@ -24,7 +24,6 @@ namespace ViewModel
                 && !viewModelSim.getSetFlag;
         }
 
-
         public override void Execute(object? parameter)
         {
             viewModelSim.SimStart();
@@ -32,7 +31,7 @@ namespace ViewModel
 
         private void OnSimViewModelPropertyChanged(object? sn, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(ViewModelSim.getSetFlag))
+            if (e.PropertyName == nameof(ViewModelSim.getSetFlag))
             {
                 OnCanExecuteChanged();
             }

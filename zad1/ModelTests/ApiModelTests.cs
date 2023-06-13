@@ -14,7 +14,7 @@ namespace Model.Tests
         [TestMethod]
         public void StworzApiModelTest()
         {
-            ApiModel log = ApiModel.StworzModelApi();
+            ModelAbstractApi log = ModelAbstractApi.StworzModelApi();
             Assert.IsNotNull(log);
         }
     }
