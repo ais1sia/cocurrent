@@ -15,25 +15,17 @@ namespace Dane.Tests
         public void StworzDaneApiTest()
         {
             DaneAbstractApi api = DaneAbstractApi.StworzDaneApi();
-            DaneApi api2 = new DaneApi();
-
-            if(api2.WysokoscPlanszy != api.WysokoscPlanszy) 
-            { 
-                Assert.Fail();
-            }
-            else if(api2.SzerokoscPlanszy != api.SzerokoscPlanszy)
-            {
-                Assert.Fail();
-            }
-            else if (api2.SrednicaKuli != api.SrednicaKuli)
-            {
-                Assert.Fail();
-            }
-            else
-            {
-                Assert.IsTrue(true);
-            }
-
+            Assert.IsNotNull(api);
         }
+
+        [TestMethod()]
+        public void RandomTest()
+        {
+            DaneAbstractApi dataApi = DaneAbstractApi.StworzDaneApi();
+            Assert.AreNotEqual(dataApi.WysokoscPlanszy, default);
+            Assert.AreNotEqual(dataApi.SzerokoscPlanszy, default);
+            Assert.AreNotEqual(dataApi.maxSrednicaKuli, default);
+        }
+
     }
 }

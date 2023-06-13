@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,16 +11,26 @@ namespace ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;//auto-generate
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));//auto-generate
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected bool SetField<T>(ref T field, T value, InterfaceValidator<T> val, T def, [CallerMemberName] string propertyName = "")
+        {
+            if (val.IsInvalid(value))
+            {
+                value = def;
+            }
+
+            return SetField(ref field, value, propertyName);
         }
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
         {
-            if(EqualityComparer<T>.Default.Equals(field, value))
+            if (EqualityComparer<T>.Default.Equals(field, value))
             {
                 return false;
             }

@@ -8,6 +8,7 @@ namespace Model
 {
     public interface InterfaceValidator<T>
     {
-        bool IsValid (T value);
+        bool IsValid(T value);
+        bool IsInvalid(T value);
     }
 }

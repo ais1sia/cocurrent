@@ -10,7 +10,9 @@ namespace Dane
     {
         public abstract int WysokoscPlanszy { get; }
         public abstract int SzerokoscPlanszy { get; }
-        public abstract int SrednicaKuli { get; }
+        public abstract int minSrednicaKuli { get; }
+        public abstract int maxSrednicaKuli { get; }
+        public abstract float predkosc { get; }
 
 
         public static DaneAbstractApi StworzDaneApi()

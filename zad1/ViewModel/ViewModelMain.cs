@@ -11,9 +11,9 @@ namespace ViewModel
     {
         public ViewModelBase thisViewModel { get; }
 
-        public ViewModelMain():base()
+        public ViewModelMain() : base()
         {
-            thisViewModel = new ViewModelSim(validatorKulek: new ValidatorKulek(1, 25));
+            thisViewModel = new ViewModelSim(validatorKulek: new ValidatorKulek(1, 20));
         }
     }
 }
