@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logika;
+﻿using Logika;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Logika.Tests
         {
             Vector2 leg = new Vector2(4, 6);
             Vector2 speed = new Vector2(0, 0);
-            Kulka ball1 = new Kulka(18,speed,leg,null,null);
+            Kulka ball1 = new Kulka(18, speed, leg, null, null);
 
             Vector2 leg2 = new Vector2(3, 4);
             Vector2 speed2 = new Vector2(0, 0);
