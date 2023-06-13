@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dane
+namespace Logika
 {
     public struct Vector2 : IEquatable<Vector2>
     {
