@@ -135,7 +135,7 @@ internal class Kulki : LogikaAPI {
 
 		CancelSimulationSource = new CancellationTokenSource();
 
-        logger.ustawTimer(10000);
+        logger.ustawTimer(100);
 
         for (var i = 0; i < daneKulki.GetCount(); i++) {
 			var kulka = new Kulka(i, daneKulki.Get(i), this);
