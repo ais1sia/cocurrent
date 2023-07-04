@@ -1,16 +1,19 @@
-﻿namespace Dane
-{
-    public class DaneApi : DaneAbstractApi
-    {
-        //ustawiamy tutaj parametry
-        public override int WysokoscPlanszy { get; } = 200;
+﻿using Dane.Components;
+using System;
+using System.Numerics;
+using System.Threading;
 
-        public override int SzerokoscPlanszy { get; } = 350;
+namespace Dane;
 
-        public override int minSrednicaKuli { get; } = 12;
+// About
+//  It is the interface we're sharing outside.
 
-        public override int maxSrednicaKuli { get; } = 38;
-
-        public override float predkosc { get; } = 20f;
-    }
+public abstract class DaneAPI {
+    public abstract void Add(InterfaceKulka newBall);
+	public abstract InterfaceKulka Get(int index);
+	public abstract int GetCount();
+	public static DaneAPI CreateBallsList() { return new DaneKulki(); }
+    public static ITransform CreateTransform(Vector2 newPosition, float newDiameter) { return new Transform(newPosition, newDiameter); }
+    public static IRigidBody CreateRigidBody(Vector2 newVelocity, float newMass) { return new RigidBody(newVelocity, newMass); }
+	public static InterfaceKulka CreateBall(int newIdentifier, ITransform newTransfrom, IRigidBody newRigidBody) { return new DaneKulka(newIdentifier, newTransfrom, newRigidBody); }
 }
