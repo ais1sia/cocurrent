@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Threading.Tasks;
 using Dane;
+using System.Threading;
 
 namespace Logika;
 
@@ -18,6 +19,8 @@ internal class Kulka : InterfaceKulka {
 
 	public event EventHandler<OnBallChangeEventArgs>? PositionChange;
     public event EventHandler<OnBallChangeEventArgs>? DiameterChange;
+
+ 
 
     // CONSTRUCTORS
 

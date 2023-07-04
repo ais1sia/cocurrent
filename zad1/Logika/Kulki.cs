@@ -15,10 +15,12 @@ namespace Logika;
 
 internal class Kulki : LogikaAPI {
 
-    public readonly Mutex simulationPause = new Mutex(false); // CriticalSection Lock
+    public readonly Mutex simulationPause = new(false);
     private readonly DaneAPI daneKulki;
 
-    public CancellationTokenSource CancelSimulationSource { get; private set; }         //
+    private readonly KulkiLogger logger = new KulkiLogger();
+
+    public CancellationTokenSource CancelSimulationSource { get; private set; }
     public Vector2 BoardSize { get; }
 
 	public Kulki(DaneAPI newDataBalls, Vector2 newBoardSize) {
@@ -28,7 +30,8 @@ internal class Kulki : LogikaAPI {
 	}
 
 	protected override void OnPositionChange(OnBallChangeEventArgs newArgs) {
-		base.OnPositionChange(newArgs);
+        logger.AddQueueLog(newArgs.Ball);
+        base.OnPositionChange(newArgs);
 	}
 
 	public override void AddBalls(int newCount) {
@@ -132,15 +135,16 @@ internal class Kulki : LogikaAPI {
 
 		CancelSimulationSource = new CancellationTokenSource();
 
+        logger.ustawTimer(10000);
+
         for (var i = 0; i < daneKulki.GetCount(); i++) {
-			var ball = new Kulka(i, daneKulki.Get(i), this);
+			var kulka = new Kulka(i, daneKulki.Get(i), this);
 
-			// ATTACH CALLBACKS
-			ball.PositionChange += (ignored, arguments) => OnPositionChange(arguments);
-            ball.DiameterChange += (ignored, arguments) => OnDiameterChange(arguments);
+			kulka.PositionChange += (ignored, arguments) => OnPositionChange(arguments);
+            kulka.DiameterChange += (ignored, arguments) => OnDiameterChange(arguments);
 
-            // CREATING THRED'S
-            Task.Factory.StartNew(ball.Simulate, CancelSimulationSource.Token);
+            // CREATING THREADS
+            Task.Factory.StartNew(kulka.Simulate, CancelSimulationSource.Token);
 		}
 	}
 
