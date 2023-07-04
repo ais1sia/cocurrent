@@ -9,10 +9,9 @@ using System.Threading;
 using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Dane;
 
 
-namespace Logika
+namespace Dane
 {
     public interface InterfejsLogger
     {
