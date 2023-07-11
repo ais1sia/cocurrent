@@ -13,7 +13,8 @@ public class AsyncObservableCollection<T> : ObservableCollection<T> {
 
     protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e) {
         if (SynchronizationContext.Current == synchronizationContext)
-            RaiseCollectionChanged(e); // Execute the CollectionChanged event on the current thread
+            // Execute the CollectionChanged event on the current thread
+            RaiseCollectionChanged(e); 
         else
             synchronizationContext.Send(RaiseCollectionChanged, e); // Raises the CollectionChanged event on the creator thread
     }

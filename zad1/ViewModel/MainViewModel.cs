@@ -3,11 +3,6 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Presentation.Model;
 
-// TODO:
-// 1. Move outside AsyncObservableCollection. [ and understand... ]
-// 2. Move outside RelayCommand.
-// 3. Move outside BallPosition.
-
 // About:
 // Properties inside class that derive from INotifyPropertyChanged interface and
 //  are marked as public can be reached inside View.

@@ -27,15 +27,12 @@ namespace Dane
         private readonly Mutex queuemutex = new();
 
         private Task? loggingTask;
-
         private static System.Timers.Timer? timer;
-
         private readonly ConcurrentQueue<JObject> kulkiQueue = new();
 
         public KulkiLogger()
         {
             string path = Path.GetTempPath();
-            //string path = "C:\\Users\\Admin\\source\\repos\\cocurrent\\zad1\\Dane\\";
             filePath = path + "Kulki.json";
 
             if (File.Exists(filePath))

@@ -14,13 +14,12 @@ namespace Logika;
 internal class Kulka : InterfaceKulka {
 
 	private readonly InterfaceKulka ball;
+    private readonly Random random;
 	private readonly Kulki owner;
-	private readonly Random random;
 
 	public event EventHandler<OnBallChangeEventArgs>? PositionChange;
     public event EventHandler<OnBallChangeEventArgs>? DiameterChange;
 
- 
 
     // CONSTRUCTORS
 
@@ -106,7 +105,6 @@ internal class Kulka : InterfaceKulka {
             } finally {
                 owner.simulationPause.ReleaseMutex();
             }
-
         }
 
         Vector2 newPosition = Position + Vector2.Multiply(Velocity, deltaTime);
@@ -130,5 +128,4 @@ internal class Kulka : InterfaceKulka {
 
         return newPosition;
 	}
-
 }

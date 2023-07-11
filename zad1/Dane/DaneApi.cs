@@ -10,8 +10,8 @@ namespace Dane;
 
 public abstract class DaneAPI {
     public abstract void Add(InterfaceKulka newBall);
-	public abstract InterfaceKulka Get(int index);
 	public abstract int GetCount();
+	public abstract InterfaceKulka Get(int index);
 	public static DaneAPI CreateBallsList() { return new DaneKulki(); }
     public static ITransform CreateTransform(Vector2 newPosition, float newDiameter) { return new Transform(newPosition, newDiameter); }
     public static IRigidBody CreateRigidBody(Vector2 newVelocity, float newMass) { return new RigidBody(newVelocity, newMass); }
